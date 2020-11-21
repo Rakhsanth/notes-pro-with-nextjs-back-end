@@ -23,12 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rakhsanth/notes-pro-with-nextjs.git"
+    "url": "git+https://github.com/Rakhsanth/notes-pro-with-nextjs-back-end.git"
   },
   "author": "Rakhsanth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Rakhsanth/notes-pro-with-nextjs/issues"
+    "url": "https://github.com/Rakhsanth/notes-pro-with-nextjs-back-end/issues"
   },
-  "homepage": "https://github.com/Rakhsanth/notes-pro-with-nextjs#readme"
+  "homepage": "https://github.com/Rakhsanth/notes-pro-with-nextjs-back-end#readme"
 }
