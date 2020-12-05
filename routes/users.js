@@ -8,11 +8,14 @@ const {
     deleteUser,
     createUser,
     userLogout,
+    getCurrentUser,
+    changePassword,
 } = require('../controllers/users');
 const { protected } = require('../middlewares/authMiddlewares');
 
 const router = express.Router();
 
+router.route('/auth/me').get(protected, getCurrentUser);
 router
     .route('/:id')
     .get(protected, getUser)
@@ -21,5 +24,6 @@ router
 router.route('/register').post(createUser);
 router.route('/login').post(userLogin);
 router.route('/auth/logout').get(protected, userLogout);
+router.route('/auth/changePassword').put(protected, changePassword);
 
 module.exports = router;

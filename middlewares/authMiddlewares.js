@@ -13,6 +13,7 @@ const protected = asyncHandler(async (request, response, next) => {
     ) {
         token = request.headers.authorization.split(' ')[1];
     } else if (request.session) {
+        console.log(request.session);
         token = request.session.token;
     } else if (request.cookies) {
         // token = request.cookies.token;

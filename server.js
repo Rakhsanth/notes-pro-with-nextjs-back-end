@@ -14,6 +14,7 @@ const rootPath = require('./utils/rootPath');
 const connectDb = require('./config/db');
 const mongoErrorHandler = require('./middlewares/mongoErrorHandler');
 const userRoutes = require('./routes/users');
+const notesRoutes = require('./routes/notes');
 // To get and environment variables from config:
 dotenv.config({ path: path.join(rootPath, 'config', 'config.env') });
 
@@ -68,7 +69,7 @@ app.use(express.static(path.join(rootPath, 'public')));
 
 // API routes
 app.use('/api/v1/users', userRoutes);
-
+app.use('/api/v1/notes', notesRoutes);
 // Error handler for catched errors from above middlewares.
 //This recieves the next() from the above router middleware.
 app.use(mongoErrorHandler);

@@ -14,6 +14,10 @@ const userSchema = new Schema({
         required: true,
         select: false,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 userSchema.methods.getJwtToken = function () {
@@ -33,6 +37,11 @@ userSchema.pre('save', async function (next, document) {
         const hashedPassword = await brcrypt.hash(this.password, 10);
         this.password = hashedPassword;
     }
+    next();
+});
+
+userSchema.pre('remove', async function (next, document) {
+    await this.model('Notes').deleteMany({ user: this.id });
     next();
 });
 
