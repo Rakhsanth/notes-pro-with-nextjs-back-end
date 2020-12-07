@@ -74,7 +74,11 @@ app.use('/api/v1/notes', notesRoutes);
 //This recieves the next() from the above router middleware.
 app.use(mongoErrorHandler);
 
-const port = process.env.PORT || 8080;
+app.get('/*', (req, res, next) => {
+    res.status(200).json({ success: false });
+});
+
+const port = process.env.PORT || 8081;
 
 const server = app.listen(port, () => {
     console.log(
