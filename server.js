@@ -73,7 +73,7 @@ app.use('/api/v1/notes', notesRoutes);
 // Error handler for catched errors from above middlewares.
 //This recieves the next() from the above router middleware.
 
-app.get('/_ah/start', (req, res, next) => {
+app.get('/*', (req, res, next) => {
     res.status(200).json({ success: false, message: 'dummy response' });
 });
 
