@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const colors = require('colors');
 // core modules
 const path = require('path');
@@ -72,13 +72,14 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/notes', notesRoutes);
 // Error handler for catched errors from above middlewares.
 //This recieves the next() from the above router middleware.
-app.use(mongoErrorHandler);
 
-app.get('/*', (req, res, next) => {
-    res.status(200).json({ success: false });
+app.get('/_ah/start', (req, res, next) => {
+    res.status(200).json({ success: false, message: 'dummy response' });
 });
 
-const port = process.env.PORT || 8081;
+app.use(mongoErrorHandler);
+
+const port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => {
     console.log(
