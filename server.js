@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const colors = require('colors');
 // core modules
 const path = require('path');
@@ -68,7 +68,7 @@ app.use(
     })
 );
 
-if (process.env.ENVIRONMENT === 'dev') {
+if (process.env.ENVIRONMENT === 'dev' || process.env.ENVIRONMENT === 'prod') {
     app.use(morgan('dev'));
 }
 
