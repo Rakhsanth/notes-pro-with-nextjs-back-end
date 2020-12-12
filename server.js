@@ -28,7 +28,7 @@ const app = express();
 app.use(express.json()); // I think it has the next method so that this can pass to all middlewares
 
 // Used for trusting the 1st proxy set by heroku in this case
-app.set('trust proxy', 1);
+app.set('trust proxy', true);
 
 // This will add the cookie parsing functionlity and enables to get get and send cookie on req and res.
 app.use(cookieParser());
