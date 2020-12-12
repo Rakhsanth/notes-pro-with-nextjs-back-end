@@ -31,7 +31,15 @@ app.use(express.json()); // I think it has the next method so that this can pass
 app.use(cookieParser());
 
 // To enable cors from different trusted origins
-app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'https://notes-pro-ldkvdejl7.vercel.app'] }));
+app.use(
+    cors({
+        credentials: true,
+        origin: [
+            'http://localhost:3000',
+            'https://notes-pro-ldkvdejl7.vercel.app',
+        ],
+    })
+);
 
 // create mongo store for storing sessions
 const store = new mongoDBStore({
