@@ -37,10 +37,7 @@ app.use(cookieParser());
 app.use(
     cors({
         credentials: true,
-        origin: [
-            'http://localhost:3000',
-            'https://notes-pro-ldkvdejl7.vercel.app',
-        ],
+        origin: ['http://localhost:3000', 'https://notes-pro.vercel.app'],
     })
 );
 
