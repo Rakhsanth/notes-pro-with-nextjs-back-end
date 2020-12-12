@@ -17,6 +17,9 @@ description:    To get a notes by his unique ID
 auth:           Logged in user
 */
 const getNotes = asyncHandler(async (request, response, next) => {
+    console.log('logging session'.yellow.inverse);
+    console.log(request.session);
+
     const notes = await Notes.findById(request.params.id);
     if (!notes) {
         return next(new ErrorResponse('Note does not exist', '404'));

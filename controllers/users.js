@@ -47,8 +47,6 @@ description:    To login a user
 auth:           all
 */
 const userLogin = asyncHandler(async (request, response, next) => {
-    console.log('logging session'.yellow.inverse);
-    console.log(request.session);
     const { userName, password } = request.body;
 
     const user = await User.findOne({ userName: userName }).select('+password');
@@ -63,6 +61,9 @@ const userLogin = asyncHandler(async (request, response, next) => {
         return next(new ErrorResponse('Incorrect password', '401'));
     }
     setTokenToCookie(user, 200, request, response);
+
+    console.log('logging session'.yellow.inverse);
+    console.log(request.session);
 });
 /*
 route:          POST /users/register

@@ -27,6 +27,9 @@ const app = express();
 // Using the body parser from express to parse the body from request without that chunk and buffer thing.
 app.use(express.json()); // I think it has the next method so that this can pass to all middlewares
 
+// Used for trusting the 1st proxy set by heroku in this case
+app.set('trust proxy', 1);
+
 // This will add the cookie parsing functionlity and enables to get get and send cookie on req and res.
 app.use(cookieParser());
 
