@@ -61,7 +61,6 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * process.env.SESSION_EXPIRE, // 1 hour
             httpOnly: false,
             secure: secureCookie,
-            sameSite: false,
         },
         store: store,
         resave: true,
