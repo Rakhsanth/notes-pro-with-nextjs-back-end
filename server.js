@@ -51,7 +51,7 @@ const store = new mongoDBStore({
 
 // create session
 const secureCookie = process.env.ENVIRONMENT === 'prod' ? true : false;
-const httpOnly = process.env.ENVIRONMENT === 'prod' ? true : false;
+// const httpOnly = process.env.ENVIRONMENT === 'prod' ? true : false;
 app.use(
     require('express-session')({
         // By default UUID-safe is used which is enough unleass some complex use case is needed
@@ -59,7 +59,7 @@ app.use(
         secret: process.env.SESSION_SECRET,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * process.env.SESSION_EXPIRE, // 1 hour
-            httpOnly: httpOnly,
+            httpOnly: true,
             secure: secureCookie,
         },
         store: store,
