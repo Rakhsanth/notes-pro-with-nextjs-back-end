@@ -59,7 +59,7 @@ app.use(
         secret: process.env.SESSION_SECRET,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * process.env.SESSION_EXPIRE, // 1 hour
-            httpOnly: false,
+            httpOnly: true,
             secure: secureCookie,
         },
         store: store,
