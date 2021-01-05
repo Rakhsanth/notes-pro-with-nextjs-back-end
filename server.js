@@ -2,8 +2,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const mongoDBStore = require('connect-mongodb-session')(session);
+// const session = require('express-session');
+// const mongoDBStore = require('connect-mongodb-session')(session);
 const cors = require('cors');
 const morgan = require('morgan');
 const colors = require('colors');
@@ -42,36 +42,36 @@ app.use(
 );
 
 // create mongo store for storing sessions
-const store = new mongoDBStore({
-    uri: process.env.MONGODB_URI,
-    collection: 'sessions',
-});
+// const store = new mongoDBStore({
+//     uri: process.env.MONGODB_URI,
+//     collection: 'sessions',
+// });
 
 // console.log(store);
 
 // create session
-const secureCookie = process.env.ENVIRONMENT === 'prod' ? true : false;
+// const secureCookie = process.env.ENVIRONMENT === 'prod' ? true : false;
 // const httpOnly = process.env.ENVIRONMENT === 'prod' ? true : false;
-app.use(
-    require('express-session')({
-        // By default UUID-safe is used which is enough unleass some complex use case is needed
-        name: process.env.SESSION_NAME,
-        secret: process.env.SESSION_SECRET,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * process.env.SESSION_EXPIRE, // 1 hour
-            httpOnly: true,
-            secure: secureCookie,
-            // domain:
-            //     process.env.ENVIRONMENT === 'prod'
-            //         ? 'https://notes-pro.vercel.app'
-            //         : 'http://localhost:3000',
-            sameSite: false,
-        },
-        store: store,
-        resave: true,
-        saveUninitialized: false,
-    })
-);
+// app.use(
+//     require('express-session')({
+//         // By default UUID-safe is used which is enough unleass some complex use case is needed
+//         name: process.env.SESSION_NAME,
+//         secret: process.env.SESSION_SECRET,
+//         cookie: {
+//             maxAge: 1000 * 60 * 60 * 24 * process.env.SESSION_EXPIRE, // 1 hour
+//             httpOnly: true,
+//             secure: secureCookie,
+//             // domain:
+//             //     process.env.ENVIRONMENT === 'prod'
+//             //         ? 'https://notes-pro.vercel.app'
+//             //         : 'http://localhost:3000',
+//             sameSite: false,
+//         },
+//         store: store,
+//         resave: true,
+//         saveUninitialized: false,
+//     })
+// );
 
 if (process.env.ENVIRONMENT === 'dev' || process.env.ENVIRONMENT === 'prod') {
     app.use(morgan('dev'));

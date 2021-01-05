@@ -221,7 +221,6 @@ const setTokenToCookie = (user, statusCode, request, response) => {
         secure: process.env.ENVIRONMENT === 'prod',
     };
 
-    request.session.token = token;
     response.status(statusCode).cookie('token', token, options).json({
         success: true,
         token,

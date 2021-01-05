@@ -12,11 +12,12 @@ const protected = asyncHandler(async (request, response, next) => {
         request.headers.authorization.startsWith('Bearer')
     ) {
         token = request.headers.authorization.split(' ')[1];
+        console.log('token got from LocalSTorage'.yellow.bold);
     } else if (request.session) {
         console.log(request.session);
         token = request.session.token;
     } else if (request.cookies) {
-        // token = request.cookies.token;
+        token = request.cookies.token;
     }
 
     if (!token) {
